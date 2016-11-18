@@ -1,0 +1,21 @@
+.center {
+  margin: auto;
+  width: 50%;
+  float: left;
+  display: inline-block;
+}
+
+li[ui-sref]:hover {
+  color: blue;
+  cursor: pointer;
+}
+.logo {
+  /*width: 64px;
+  height: 64px;*/
+  background-color: black;
+  float: left;
+}
+.categories_link {
+  clear: both;
+  padding: 10px;
+}
