@@ -21,12 +21,23 @@
         templateUrl: 'categorieslist.template.html',
         controller: 'CategoriesController as categoryList',
         resolve: {
-          categories: ['MenuDataService', '$q', function(MenuDataService, $q) {
+          categories: ['MenuDataService', function(MenuDataService) {
 
-              var t = MenuDataService.getAllCategories();
-              return t;
+              return MenuDataService.getAllCategories();
           }]
         }
+      })
+
+      .state('items', {
+          url: '/items/{categoryShortName}',
+          templateUrl: 'itemslist.template.html',
+          controller: 'ItemsController as itemList',
+          resolve: {
+            items: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+                var t = MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+                return t;
+            }]
+          }
       })
   }
 })();
